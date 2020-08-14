@@ -1,0 +1,9 @@
+create database assessment5;
+use assessment5;
+
+create table login (Email varchar(20),Pwd varchar(20) not null, type1 varchar(10) not null, primary key(Email));
+drop table login;
+desc login;
+
+insert into login values ("karthik18@gmail.com","karthik@99","admin"),("roshan04@gmail.com","roshan@99","user");
+select * from login; 

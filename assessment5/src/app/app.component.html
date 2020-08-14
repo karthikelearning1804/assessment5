@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="signin-content">
+  <div class="signin-form">
+  <form [formGroup]="loginform" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+          <h1>Login</h1>
+          <br>
+          <br>
+          <label for="EmailID">EmailID:</label>
+          <input type="text" formControlName="email" placeholder="Enter Email ID"/>
+          <br>
+          <br>
+          <span *ngIf="!loginform.get('email').value
+          && (loginform.get('email').touched || loginform.get('email').dirty)">
+          Email ID is Required</span>
+      </div>
+      <br>
+      <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password"  formControlName="password" placeholder="Password"/>
+          <br><br>
+          <div class="forget-password">
+              <a routerLink="#" routerLinkActive="active">Forgot Password?</a>
+          </div>
+          <span *ngIf="!loginform.get('password').value
+          && (loginform.get('password').touched || loginform.get('password').dirty)">
+          Enter Password</span>
+      </div>
+
+      <div class="form-group">
+        <label for="type"> Type: </label><br> &nbsp;&nbsp;
+        <input [class.is-invalid]="Type.invalid && Type.touched" type="radio" value="user"  name="type" class="form-check-input" formControlName="type"> &nbsp;
+        <label class="form-check-label" for="inlineCheckbox2"> User</label>&nbsp;&nbsp;
+        <input [class.is-invalid]="Type.invalid && Type.touched" type="radio" value="admin"  name="type" class="form-check-input" formControlName="type"> &nbsp;
+        <label class="form-check-label" for="inlineCheckbox2"> Admin</label>
+        <div *ngIf="Type.invalid && Type.touched">
+          <small class="text-danger" *ngIf="Type.errors?.required">Field cannot be empty</small>
+        </div>
+      </div>
+      
+     
+      <div class="form-group form-button">
+          <input type="submit" class="form-submit" value="Submit">
+      </div>
+      
+  </form>
+  </div>
+</div>
+</div>
+
+<router-outlet></router-outlet>
